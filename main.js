@@ -1,5 +1,7 @@
-let domSearchButton = document.getElementById('searchButton');
-let domErrorMessage = document.getElementById('errorMessage');
+const domSearchButton = document.getElementById('searchButton');
+const domErrorMessage = document.getElementById('errorMessage');
+
+const templateResult = document.getElementById('resultTemplate');
 
 let geo;
 
@@ -21,10 +23,19 @@ function gotLocation(pos) {
 }
 
 function failedLocation() {
+    domSearchButton.classList.remove('loading');
     domErrorMessage.innerText = 'You must allow geolocation so we can find local results.';
 }
 
 async function search() {
-    let searchResults = await fetch('/api/search?lat='+geo['lat']+'&lon='+geo['lon']).then(result => result.json());
+    let response = await fetch('/api/search?lat='+geo['lat']+'&lon='+geo['lon']).then(result => result.json());
+    let searchResults = response['businesses'];
+    searchResults.forEach(result => {
+        let root = templateResult.content.cloneNode(true);
+        let domResult = root.querySelector('.result');
+        domResult.querySelector('.itemImg').src = result['image_url'];
+        domResult.querySelector('.location').innerText = result['location']['city'];
+        domResult.querySelector('.stars').src = result['rating'].toString.replace('.','_');
+    });
     console.log(searchResults);
 }

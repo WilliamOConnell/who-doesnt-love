@@ -10,7 +10,7 @@ body {
 }
 
 #content {
-    max-width: 900px;
+    max-width: 800px;
     margin: auto;
 }
 #logo {
@@ -54,4 +54,48 @@ body {
     padding: 0 10px;
     text-align: center;
     color: #c0392b;
+}
+
+#yelpCredit {
+    text-align: right;
+}
+#yelpLogo {
+    vertical-align: text-bottom;
+    height: 30px;
+}
+
+.item {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    border: solid 1px #e0e0e0;
+    padding: 10px;
+}
+.item .itemImg {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-right: 10px;
+}
+.item .details {
+    flex: 1;
+}
+.item .name {
+    font-size: 26px;
+    font-weight: bold;
+}
+.item .location {
+    color: #333;
+}
+.item .stars {
+    width: 120px;
+    vertical-align: middle;
+}
+.item .reviewNumber {
+    color: #666;
+}
+.item .goButton {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
 }

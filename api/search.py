@@ -1,6 +1,7 @@
 from flask import Flask, Response, request
 import requests
 import os
+import json
 
 app = Flask(__name__)
 
@@ -25,4 +26,6 @@ def search():
             'Authorization':'Bearer {}'.format(os.environ['YELP_TOKEN'])
         }
     )
-    return Response(response.text, mimetype="application/json")
+    response_json = json.loads(response.text)
+    results = [x for x in response_json['businesses'] if x['name'] == "Chilli's"]
+    return Response(json.dumps(results), mimetype="application/json")
