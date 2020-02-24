@@ -56,12 +56,43 @@ body {
     color: #c0392b;
 }
 
+#resultsContain {
+}
+#resultsContain.hidden {
+    display: none;
+}
+
 #yelpCredit {
     text-align: right;
 }
 #yelpLogo {
     vertical-align: text-bottom;
     height: 30px;
+}
+
+#filterHead {
+    background-color: #c0392b;
+    color: #FFF;
+    padding: 2px 4px;
+    cursor: pointer;
+}
+#filterSymbol {
+    display: inline-block;
+    transition: transform 0.2s;
+}
+#filters {
+    height: 0;
+    overflow: hidden;
+    padding: 0 5px;
+    transition: height 0.2s, padding 0.2s;
+    background-color: #fafafa;
+}
+#filterContainer.open #filters {
+    height: 30px;
+    padding: 5px;
+}
+#filterContainer.open #filterSymbol {
+    transform: rotate(90deg);
 }
 
 .item {

@@ -14,8 +14,14 @@
             <button id="searchButton">Find Restaurants</button>
             <div id="errorMessage"></div>
         </div>
-        <div id="resultsContain">
+        <div id="resultsContain" class="hidden">
             <div id="yelpCredit">Results from <a href="https://yelp.com"><img id="yelpLogo" src="img/yelp.png" alt="Yelp logo."></a></div>
+            <div id="filterContainer">
+                <div id="filterHead"><span id="filterSymbol">&#9654;</span> Filters</div>
+                <div id="filters">
+                    <input type="checkbox" id="chilisFilter"><label for="chilisFilter">Is Chili's</label>
+                </div>
+            </div>
             <div id="results">
             </div>
         </div>
