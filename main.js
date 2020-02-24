@@ -3,6 +3,7 @@ const domErrorMessage = document.getElementById('errorMessage');
 const domResultsContainer = document.getElementById('resultsContain');
 const domFilterContainer = document.getElementById('filterContainer');
 const domFilterHead = document.getElementById('filterHead');
+const domChilisFilter = document.getElementById('chilisFilter');
 const domResults = document.getElementById('results');
 
 const templateResult = document.getElementById('resultTemplate');
@@ -20,6 +21,10 @@ domSearchButton.addEventListener('click', function() {
 
 domFilterHead.addEventListener('click', function() {
     domFilterContainer.classList.toggle('open');
+});
+
+domChilisFilter.addEventListener('click', function() {
+    search(); //of course, this does nothing because that's the joke
 });
 
 function gotLocation(pos) {
@@ -57,7 +62,7 @@ async function search() {
         let root = templateResult.content.cloneNode(true);
         let domItem = root.querySelector('.item');
         domItem.querySelector('.itemImg').src = result['image_url'];
-        domItem.querySelector('.location').innerText = result['location']['city'];
+        domItem.querySelector('.location').innerText = result['location']['city']+' ('+result['distance']*0.000621371+' mi)'; //distance is given in meters, so convert to miles
         domItem.querySelector('.stars').src = 'img/stars/'+result['rating'].toString().replace('.','_')+'.png';
         domItem.querySelector('.reviewNumber').innerText = result['review_count'].toString()+' ratings';
         domItem.querySelector('.reviewNumber').href = result['url'];
