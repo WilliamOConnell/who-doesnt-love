@@ -2,9 +2,24 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Who Doesn't Love Chilli's?</title>
+    <link rel="stylesheet" href="main.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap" rel="stylesheet">
 </head>
 <body>
-    Who doesn't love Chilli's?
+    <div id="content">
+        <img id="logo" src="img/logo.svg" alt="Who Doesn't Love Chilli's logo.">
+        <div id="startBox">
+            <button id="searchButton">Find Restaurants</button>
+            <div id="errorMessage"></div>
+        </div>
+        <div id="results">
+            <div class="item">
+                <div class="name">Chilli's</div>
+            </div>
+        </div>
+    </div>
+    <script src="main.js"></script>
 </body>
 </html>

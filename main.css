@@ -1,0 +1,57 @@
+* {
+    box-sizing: border-box;
+}
+html, body {
+    padding: 0;
+    margin: 0;
+}
+body {
+    font-family: "Open Sans", sans-serif;
+}
+
+#content {
+    max-width: 900px;
+    margin: auto;
+}
+#logo {
+    display: block;
+    width: 80%;
+    margin: auto;
+}
+
+#startBox {
+    margin: 30px auto;
+}
+#searchButton {
+    display: block;
+    padding: 12px 20px;
+    margin: 10px auto;
+    background-color: #c0392b;
+    color: #FFF;
+    font-size: 22px;
+    font-family: "Open Sans", sans-serif;
+    border-radius: 0;
+    border: none;
+    cursor: pointer;
+    transition: box-shadow 0.1s;
+}
+#searchButton:hover {
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+#searchButton:active {
+    box-shadow: 0 0 0 rgba(0,0,0,0.3);
+}
+#searchButton.loading {
+    color: transparent;
+    background-image: url("img/tail-spin.svg");
+    background-position: center;
+    background-size: 30px;
+    background-repeat: no-repeat;
+}
+#errorMessage {
+    max-width: 500px;
+    margin: auto;
+    padding: 0 10px;
+    text-align: center;
+    color: #c0392b;
+}
