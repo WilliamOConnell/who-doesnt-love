@@ -45,6 +45,7 @@ async function search() {
         domItem.querySelector('.location').innerText = result['location']['city'];
         domItem.querySelector('.stars').src = 'img/stars/'+result['rating'].toString().replace('.','_')+'.png';
         domItem.querySelector('.reviewNumber').innerText = result['review_count'].toString()+' ratings';
+        domItem.querySelector('.reviewNumber').href = result['url'];
         domItem.querySelector('.goButton').href = 'https://www.google.com/maps/dir/?api=1&destination='+result['coordinates']['latitude']+','+result['coordinates']['longitude'];
         domResults.appendChild(domItem);
     });
