@@ -4,7 +4,7 @@ import os
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET'])
+@app.route('/api/search', methods=['GET'])
 def search():
 	if not ('lat' in request.args and 'lon' in request.args):
 		return "Please provide location", 400
@@ -26,7 +26,3 @@ def search():
 		}
 	)
 	return Response(response.text, mimetype="application/json")
-
-@app.route('/<path:path>')
-def catch_all(path):
-	return Response('This is {}'.format(path), mimetype="text/html")
