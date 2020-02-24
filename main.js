@@ -14,7 +14,7 @@ domSearchButton.addEventListener('click', function() {
         domErrorMessage.innerText = 'Sorry, your browser does not support geolocation.';
     } else {
         domSearchButton.classList.add('loading');
-        navigator.geolocation.getCurrentPosition(gotLocation, failedLocation, {timeout:3000});
+        navigator.geolocation.getCurrentPosition(gotLocation, failedLocation, {timeout:2500});
     }
 });
 
