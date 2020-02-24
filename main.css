@@ -16,7 +16,7 @@ body {
 #logo {
     display: block;
     width: 80%;
-    margin: auto;
+    margin: 10px auto;
 }
 
 #startBox {
@@ -83,13 +83,13 @@ body {
 #filters {
     height: 0;
     overflow: hidden;
-    padding: 0 5px;
+    padding: 0 10px;
     transition: height 0.2s, padding 0.2s;
     background-color: #fafafa;
 }
 #filterContainer.open #filters {
-    height: 30px;
-    padding: 5px;
+    height: 40px;
+    padding: 10px;
 }
 #filterContainer.open #filterSymbol {
     transform: rotate(90deg);
@@ -133,4 +133,15 @@ body {
     position: absolute;
     bottom: 10px;
     right: 10px;
+}
+
+#signature {
+    margin-top: 50px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    text-align: center;
+    color: #666666;
+}
+#signature a {
+    color: #555555;
 }
