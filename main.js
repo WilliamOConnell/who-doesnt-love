@@ -35,9 +35,10 @@ async function search() {
         let domItem = root.querySelector('.item');
         domItem.querySelector('.itemImg').src = result['image_url'];
         domItem.querySelector('.location').innerText = result['location']['city'];
-        domItem.querySelector('.stars').src = result['rating'].toString().replace('.','_');
-        domItem.querySelector('.goButton').href = 'https://www.google.com/maps/dir/?api=1&destination='+result['location']['latitude']+','+result['location']['longitude'];
+        domItem.querySelector('.stars').src = 'img/stars/'+result['rating'].toString().replace('.','_')+'.png';
+        domItem.querySelector('.goButton').href = 'https://www.google.com/maps/dir/?api=1&destination='+result['coordinates']['latitude']+','+result['coordinates']['longitude'];
         domResults.appendChild(domItem);
     });
     console.log(searchResults);
+    domSearchButton.classList.remove('loading');
 }

@@ -27,5 +27,7 @@ def search():
         }
     )
     response_json = json.loads(response.text)
+    print(response_json)
     results = [x for x in response_json['businesses'] if x['name'] == "Chili's"]
+    print(results)
     return Response(json.dumps(results), mimetype="application/json")
