@@ -100,7 +100,11 @@ body {
     display: flex;
     flex-direction: row;
     border: solid 1px #e0e0e0;
+    border-top: none; /* prevent borders from doubling up */
     padding: 10px;
+}
+.item:first-child {
+    border-top: solid 1px #e0e0e0;
 }
 .item .itemImg {
     width: 150px;
