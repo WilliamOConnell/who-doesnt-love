@@ -62,7 +62,7 @@ async function search() {
         let root = templateResult.content.cloneNode(true);
         let domItem = root.querySelector('.item');
         domItem.querySelector('.itemImg').src = result['image_url'];
-        domItem.querySelector('.location').innerText = result['location']['city']+' ('+result['distance']*0.000621371+' mi)'; //distance is given in meters, so convert to miles
+        domItem.querySelector('.location').innerText = result['location']['city']+' ('+Math.round(result['distance']*0.000621371)+' mi)'; //distance is given in meters, so convert to miles
         domItem.querySelector('.stars').src = 'img/stars/'+result['rating'].toString().replace('.','_')+'.png';
         domItem.querySelector('.reviewNumber').innerText = result['review_count'].toString()+' ratings';
         domItem.querySelector('.reviewNumber').href = result['url'];
