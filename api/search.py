@@ -4,7 +4,7 @@ import os
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET'])
+@app.route('/search', methods=['GET'])
 def search():
 	if not ('lat' in request.args and 'lon' in request.args):
 		return "Please provide location", 400
