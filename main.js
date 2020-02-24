@@ -75,4 +75,5 @@ async function search() {
     console.log(searchResults);
     domSearchButton.classList.remove('loading');
     domResultsContainer.classList.remove('hidden');
+    domErrorMessage.innerText = '';
 }
