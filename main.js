@@ -28,8 +28,7 @@ function failedLocation() {
 }
 
 async function search() {
-    let response = await fetch('/api/search?lat='+geo['lat']+'&lon='+geo['lon']).then(result => result.json());
-    let searchResults = response['businesses'];
+    let searchResults = await fetch('/api/search?lat='+geo['lat']+'&lon='+geo['lon']).then(result => result.json());
     searchResults.forEach(result => {
         let root = templateResult.content.cloneNode(true);
         let domResult = root.querySelector('.result');
