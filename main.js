@@ -36,7 +36,22 @@ function failedLocation() {
 }
 
 async function search() {
-    let searchResults = await fetch('/api/search?lat='+geo['lat']+'&lon='+geo['lon']).then(result => result.json());
+    let response = await fetch('/api/search?lat=' + geo['lat'] + '&lon=' + geo['lon']).catch(e => console.log(e));
+
+    if (!response || !response.ok) {
+        domErrorMessage.innerText = 'Unable to contact Yelp. Check your internet connection.';
+        domSearchButton.classList.remove('loading');
+        return;
+    }
+
+    let searchResults = await response.json();
+
+    if (searchResults.length === 0) {
+        domErrorMessage.innerText = 'Unbelievably, there are no Chili\'s nearby.';
+        domSearchButton.classList.remove('loading');
+        return;
+    }
+
     domResults.innerHTML = '';
     searchResults.forEach(result => {
         let root = templateResult.content.cloneNode(true);
