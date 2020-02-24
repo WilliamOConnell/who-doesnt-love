@@ -1,5 +1,6 @@
 const domSearchButton = document.getElementById('searchButton');
 const domErrorMessage = document.getElementById('errorMessage');
+const domResults = document.getElementById('results');
 
 const templateResult = document.getElementById('resultTemplate');
 
@@ -31,10 +32,12 @@ async function search() {
     let searchResults = await fetch('/api/search?lat='+geo['lat']+'&lon='+geo['lon']).then(result => result.json());
     searchResults.forEach(result => {
         let root = templateResult.content.cloneNode(true);
-        let domResult = root.querySelector('.result');
-        domResult.querySelector('.itemImg').src = result['image_url'];
-        domResult.querySelector('.location').innerText = result['location']['city'];
-        domResult.querySelector('.stars').src = result['rating'].toString.replace('.','_');
+        let domItem = root.querySelector('.item');
+        domItem.querySelector('.itemImg').src = result['image_url'];
+        domItem.querySelector('.location').innerText = result['location']['city'];
+        domItem.querySelector('.stars').src = result['rating'].toString.replace('.','_');
+        domItem.querySelector('.goButton').href = 'https://www.google.com/maps/dir/?api=1&destination='+result['location']['latitude']+','+result['location']['longitude'];
+        domResults.appendChild(domItem);
     });
     console.log(searchResults);
 }
