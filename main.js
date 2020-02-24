@@ -41,11 +41,14 @@ function failedLocation() {
 }
 
 async function search() {
+    domResults.innerHTML = ''; //clear old results
+
     let response = await fetch('/api/search?lat=' + geo['lat'] + '&lon=' + geo['lon']).catch(e => console.log(e));
 
     if (!response || !response.ok) {
         domErrorMessage.innerText = 'Unable to contact Yelp. Check your internet connection.';
         domSearchButton.classList.remove('loading');
+        domResultsContainer.classList.add('hidden');
         return;
     }
 
@@ -54,10 +57,10 @@ async function search() {
     if (searchResults.length === 0) {
         domErrorMessage.innerText = 'Unbelievably, there are no Chili\'s nearby.';
         domSearchButton.classList.remove('loading');
+        domResultsContainer.classList.add('hidden');
         return;
     }
 
-    domResults.innerHTML = '';
     searchResults.forEach(result => {
         let root = templateResult.content.cloneNode(true);
         let domItem = root.querySelector('.item');
@@ -71,5 +74,5 @@ async function search() {
     });
     console.log(searchResults);
     domSearchButton.classList.remove('loading');
-    domResultsContainer.classList.remove('hidden')
+    domResultsContainer.classList.remove('hidden');
 }
