@@ -8,7 +8,7 @@ const domResults = document.getElementById('results');
 
 const templateResult = document.getElementById('resultTemplate');
 
-let geo;
+let geo; //user's location
 
 domSearchButton.addEventListener('click', function() {
     if (!navigator.geolocation) {
@@ -69,7 +69,7 @@ async function search() {
         domItem.querySelector('.stars').src = 'img/stars/'+result['rating'].toString().replace('.','_')+'.png';
         domItem.querySelector('.reviewNumber').innerText = result['review_count'].toString()+' ratings';
         domItem.querySelector('.reviewNumber').href = result['url'];
-        domItem.querySelector('.goButton').href = 'https://www.google.com/maps/dir/?api=1&destination='+result['coordinates']['latitude']+','+result['coordinates']['longitude'];
+        domItem.querySelector('.goButton').href = encodeURI('https://www.google.com/maps/dir/?api=1&destination=Chili\'s, '+result['location']['address1']+', '+result['location']['city']+', '+result['location']['state']);
         domResults.appendChild(domItem);
     });
     console.log(searchResults);
